@@ -94,4 +94,59 @@ print obj.x
 
 print "----------importar e exportar csv----------"
 #lercsv.py
+import csv
 
+with open('listacompras.csv','rb') as csvfile:
+    leitor = csv.reader(csvfile)
+    for linha in leitor:
+        print ", ".join(linha)
+        pass
+    pass
+with open('notas.csv', 'wb') as csvfile:
+    escritor = csv.writer(csvfile)
+    escritor.writerow(['Programacao 1', 14])
+    escritor.writerow(['Programacao 2', 15])
+    escritor.writerow(['Linguagens de Programacao', 19])
+    pass
+#lercsv.py
+
+print "----------suporte sqlite3--------"
+#bd1.py
+import sqlite3
+
+conexao = sqlite3.connect('teste.db')
+c = conexao.cursor()
+c.execute('DROP TABLE IF EXISTS disc')
+c.execute('CREATE TABLE disc (nome text, nota number)')
+conexao.commit()
+notas = [('P1', 15), ('P2', 15), ('LP', 19)]
+c.executemany('INSERT INTO disc VALUES (?,?)', notas)
+conexao.commit()
+c.execute("SELECT * FROM disc WHERE nota > 16")
+print "uma...", c.fetchone()
+k = 0; soma = 0.0
+for linha in c.execute("SELECT * FROM disc"):
+    print linha; soma += linha[1]; k += 1
+    pass
+print "media = {:2.2f}".format(soma/k)
+conexao.close()
+#bd1.py
+
+print "----------Tratamento de exceções----------"
+#exce.py
+import sys
+try:
+    f = open('ficha.text')
+    s = f.readline()
+    i = int(s.strip())
+    pass
+except IOError as e:
+    print "I/O error({0}): {1}".format(e.errno, e.strerror)
+    pass
+except ValueError:
+    print "Could not convert data to an integer."
+    pass
+except:
+    print "Unexpected error:", sys.exec_info()[0]
+    raise
+#exce.py
