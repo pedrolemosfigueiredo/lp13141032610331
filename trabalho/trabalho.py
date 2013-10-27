@@ -38,8 +38,21 @@ class Trabalho:
     def passagem_de_dados(self, ficheiro_excel, ficheiro_base_de_dados):
         self.ler_ficheiro_excel(ficheiro_excel)
         self.criar_base_de_dados(ficheiro_base_de_dados)
-        for i in range(0, self.folha.nrows):
+        for i in range(3, self.folha.nrows):
             print self.folha.cell(i, 0).value
+            print self.folha.cell(i,8).value
+            self.c.execute('insert into resultados_cna values(?,?,?,?,?,?,?,?,?)',
+                           (self.folha.cell(i,0).value,
+                            self.folha.cell(i,1).value,
+                            self.folha.cell(i,2).value,
+                            self.folha.cell(i,3).value,
+                            self.folha.cell(i,4).value,
+                            self.folha.cell(i,5).value,
+                            self.folha.cell(i,6).value,
+                            self.folha.cell(i,7).value,
+                            self.folha.cell(i,8).value,
+                            self.folha.cell(i,9).value))
+            print self.folha
             '''self.c.execute('alter table resultados_cna add column ?',
                            self.folha.cell(i,0).value)'''
             pass
