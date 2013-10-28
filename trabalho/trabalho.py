@@ -18,7 +18,8 @@ class Trabalho:
         #criação da instância cursor que permite mandar queries para a base
         #de dados
         self.c = self.conexao.cursor()
-        #criação da tabela na base de dados
+        self.c.execute('drop table if exists resultados_cna')
+        #query para criação da tabela na base de dados
         self.c.execute('''create table if not exists resultados_cna
                         (cInstituicao int, cCurso int,
                         instituicao text, curso text, grau text,
@@ -32,15 +33,16 @@ class Trabalho:
         self.wb = open_workbook(ficheiro)
         #guarda a folha pretendida na variavel folha
         self.folha = self.wb.sheet_by_index(0)
-        print self.folha.nrows
         pass
 
     def passagem_de_dados(self, ficheiro_excel, ficheiro_base_de_dados):
         self.ler_ficheiro_excel(ficheiro_excel)
         self.criar_base_de_dados(ficheiro_base_de_dados)
-        for i in range(3, self.folha.nrows):
-            print self.folha.cell(i,0).value
-            self.c.execute('insert into resultados_cna values(?,?,?,?,?,?,?,?,?)',
+        
+        #Selecção da informação e introducção da mesma na base de dados
+        for i in range(3, self.folha.nrows - 2):
+            #query que envia uma linha excel para a base de dados
+            self.c.execute("insert into resultados_cna values(?,?,?,?,?,?,?,?,?)",
                            (self.folha.cell(i,0).value,
                             self.folha.cell(i,1).value,
                             self.folha.cell(i,2).value,
@@ -51,7 +53,8 @@ class Trabalho:
                             self.folha.cell(i,7).value,
                             self.folha.cell(i,8).value))
             pass
+        #Executa na base de dados os queries do cursor
+        self.conexao.commit()
         pass
-
     pass
 Trabalho().passagem_de_dados('cna131fresultados.xls', 'trabalho')
