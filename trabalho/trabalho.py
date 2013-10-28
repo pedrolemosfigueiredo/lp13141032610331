@@ -20,10 +20,10 @@ class Trabalho:
         self.c = self.conexao.cursor()
         #criação da tabela na base de dados
         self.c.execute('''create table if not exists resultados_cna
-                        (cInstituicao integer, cCurso integer,
+                        (cInstituicao int, cCurso int,
                         instituicao text, curso text, grau text,
-                        vagasIniciais integer, colocados integer,
-                        notaMaisBaixa double, vagasSobrantes integer)''')
+                        vagasIniciais int, colocados int,
+                        notaMaisBaixa double, vagasSobrantes int)''')
     
 
     #leitura de dados de um ficheiro excel
@@ -39,8 +39,7 @@ class Trabalho:
         self.ler_ficheiro_excel(ficheiro_excel)
         self.criar_base_de_dados(ficheiro_base_de_dados)
         for i in range(3, self.folha.nrows):
-            print self.folha.cell(i, 0).value
-            print self.folha.cell(i,8).value
+            print self.folha.cell(i,0).value
             self.c.execute('insert into resultados_cna values(?,?,?,?,?,?,?,?,?)',
                            (self.folha.cell(i,0).value,
                             self.folha.cell(i,1).value,
@@ -50,11 +49,7 @@ class Trabalho:
                             self.folha.cell(i,5).value,
                             self.folha.cell(i,6).value,
                             self.folha.cell(i,7).value,
-                            self.folha.cell(i,8).value,
-                            self.folha.cell(i,9).value))
-            print self.folha
-            '''self.c.execute('alter table resultados_cna add column ?',
-                           self.folha.cell(i,0).value)'''
+                            self.folha.cell(i,8).value))
             pass
         pass
 
