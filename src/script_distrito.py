@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import sqlite3
+import matplotlib.pyplot as graf
+import numpy as np
 
 def tabela_distritos(lista):
 	mapa_distritos = { 'Lisboa' : 'Lisboa' }
@@ -9,8 +11,8 @@ def tabela_distritos(lista):
 	cursor = conn.cursor()
 	cursor.execute("drop table if exists distritos")
 	cursor.execute('''create table distritos
-						(distrito, entradas, vagas)                        
-						''')
+			(distrito, entradas, vagas, permilagem)                        
+			''')
 	conn.commit()
 	distritos = ['Aveiro','Beja','Braga','Bragança',
 	'Castelo Branco', 'Coimbra', 'Évora','Faro','Guarda','Leiria',
@@ -73,12 +75,12 @@ def tabela_distritos(lista):
 					vagas  += row[2]
 					pass
 				pass	
-		data.append([distrito,entradas,vagas])
+		data.append([distrito,entradas,vagas, (entradas * 1000.0/(entradas+vagas))])
 		entradas = 0
 		vagas = 0
 		pass
 	for x in data:
-		cursor.execute('insert into distritos values(?,?,?)',(x[0],x[1],x[2]))
+		cursor.execute('insert into distritos values(?,?,?,?)',(x[0],x[1],x[2], x[3]))
 		pass
 	conn.commit()
 		
@@ -102,9 +104,8 @@ def tabela_escolas(lista):
 	conn.text_factory = str
 	cursor = conn.cursor()
 	cursor.execute("drop table if exists escolas")
-	cursor.execute('''create table escolas(instituição 
-					, entradas, vagas, 
-					% alunos/instituição em relação ao total de alunos)''')
+	cursor.execute('''create table escolas(instituição , entradas, vagas, 
+			percentagem)''')
 	conn.commit()
 	entry = 0
 	position = 0
@@ -115,18 +116,20 @@ def tabela_escolas(lista):
 	for row in lista:
 		totalDeAlunos += row[6]
 		pass
-	print totalDeAlunos
+	relacao = 0.0
+	
 	for row in lista:
 		if(r == row[2].split(' - ')[0]):
 			entry += row[6]
 			position += row[8]
-			
+			relacao += (row[6] * 100.0)/totalDeAlunos
 			pass
 		else:
-			data.append([r, entry, position])
+			data.append([r, entry, position, relacao])
 			r = row[2].split(' - ')[0]
 			entry = row[6]
 			position = row[8]
+			relacao = ((row[6] *100.0)/totalDeAlunos) + 0.0
 			pass
 		totalEntradas += entry
 		pass
@@ -137,6 +140,7 @@ def tabela_escolas(lista):
 				if dados1[0] == dados2[0]:
 					dados1[1] += dados2[1]
 					dados1[2] += dados2[2]
+					dados1[3] += dados2[3]
 					data.pop(contador)
 					pass
 				pass
@@ -151,10 +155,21 @@ def tabela_escolas(lista):
 			institution[2] += position'''
 	data.pop(0)
 	for x in data:
-		cursor.execute('insert into escolas values(?,?,?);',(x[0], x[1], x[2]))
+		cursor.execute('insert into escolas values(?,?,?,?);',(x[0], x[1], x[2], x[3]))
 		pass
 	conn.commit()
-	
-	
-	
-	
+	pass
+'''def graficoInst(mother, lista):
+        tamanho = len(lista)
+        arrayInstituicao = []
+        arrayEntradas = []
+        for row in lista:
+                arrayInstituicao.append(row[0])
+                'arrayEntradas.append(row[1])'
+                print row[1]
+                pass
+        graf.xlabel = 'instituições'
+        graf.ylable = 'entradas'
+        graf.plot(arrayInstituicao, arrayEntradas)
+        graf.show()
+	'''
