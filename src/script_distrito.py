@@ -159,17 +159,103 @@ def tabela_escolas(lista):
 		pass
 	conn.commit()
 	pass
-'''def graficoInst(mother, lista):
-        tamanho = len(lista)
-        arrayInstituicao = []
-        arrayEntradas = []
-        for row in lista:
-                arrayInstituicao.append(row[0])
-                'arrayEntradas.append(row[1])'
-                print row[1]
-                pass
-        graf.xlabel = 'instituições'
-        graf.ylable = 'entradas'
-        graf.plot(arrayInstituicao, arrayEntradas)
-        graf.show()
-	'''
+#Constrói um gráfico que demonstra o nº de alunos colocados por 
+#instituição
+def graficoInst(mother, lista):
+	arrayInstituicao = []
+	arrayEntradas = []
+	for row in lista:
+		arrayInstituicao.append(row[0])
+		arrayEntradas.append(row[1])
+		pass
+	print arrayEntradas
+	x = np.arange(len(arrayInstituicao))
+	graf.xlabel(u'instituições')
+	graf.ylabel('entradas')
+	graf.title(u'Entradas em instituições')
+	graf.yticks(x, unicode(arrayInstituicao))
+	graf.barh(x, arrayEntradas, align='center')
+	graf.show()
+	pass 
+#Constrói um gráfico que demonstra o nº de vagas sobrantes por 
+#instituição
+def graficoIV(mother, lista):
+	arrayInstituicao = []
+	arrayVagas = []
+	for row in lista:
+		arrayInstituicao.append(row[0])
+		arrayVagas.append(row[2])
+		pass
+	print arrayVagas
+	x = np.arange(len(arrayInstituicao))
+	graf.xlabel(u'instituições')
+	graf.ylabel('vagas')
+	graf.title(u'Vagas em instituições')
+	graf.yticks(x, unicode(arrayInstituicao))
+	graf.barh(x, arrayVagas, align='center')
+	graf.show()
+	pass
+# Constrói o Gráfico das estatísticas que mostra a percentagem de alunos
+# numa instituição em relação ao total de alunos
+def graficoIP(mother, lista):
+	arrayInstituicao = []
+	arrayPercentagem = []
+	for row in lista:
+		arrayInstituicao.append(row[0])
+		arrayPercentagem.append(row[3])
+		pass
+	print arrayPercentagem
+	x = np.arange(len(arrayInstituicao))
+	graf.xlabel(u'instituições')
+	graf.ylabel('Percentagem')
+	graf.title(u'Percentagem de alunos em relação ao total')
+	graf.yticks(x, unicode(arrayInstituicao))
+	graf.barh(x, arrayPercentagem, align='center')
+	graf.show()
+	pass
+# Constrói um gráfico que mostra os alunos colocados por distrito
+def graficoDA(mother,lista):
+	arrayDistrito, arrayAluno = [],[]
+	for row in lista:
+		arrayDistrito.append(row[0])
+		arrayAluno.append(row[1])
+		pass
+	x = np.arange(len(arrayDistrito))
+	graf.xlabel(u'distritos')
+	graf.ylabel('alunos')
+	graf.title(u'Alunos colocados por distrito')
+	graf.yticks(x,unicode(arrayDistrito))
+	graf.barh(x, arrayAluno, align='center')
+	graf.show()
+	pass
+#Constrói um gráfico que mostra as vagas sobrantes po distrito
+def graficoDV(mother,lista):
+	arrayDistrito, arrayVaga = [],[]
+	for row in lista:
+		arrayDistrito.append(row[0])
+		arrayVaga.append(row[2])
+		pass
+	x = np.arange(len(arrayDistrito))
+	graf.xlabel(u'distritos')
+	graf.ylabel('vagas')
+	graf.title(u'Vagas sobrantes por distrito')
+	graf.yticks(x,unicode(arrayDistrito))
+	graf.barh(x, arrayVaga, align='center')
+	graf.show()
+	pass
+# Constrói um gráfico que mostra em permilagem os alunos que 
+# entraram em relação àqueles que concorreram por distrito
+def graficoDP(mother,lista):
+	arrayDistrito, arrayPermilagem = [],[]
+	for row in lista:
+		arrayDistrito.append(row[0])
+		arrayPermilagem.append(row[3])
+		pass
+	x = np.arange(len(arrayDistrito))
+	graf.xlabel(u'distritos')
+	graf.ylabel('permilagem')
+	graf.title(u'Permilagem de alunos colocados por distrito')
+	graf.yticks(x,unicode(arrayDistrito))
+	graf.barh(x, arrayPermilagem, align='center')
+	graf.show()
+	pass

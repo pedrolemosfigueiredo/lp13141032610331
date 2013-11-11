@@ -72,11 +72,12 @@ class Trabalho:
         pass
     def criacaoGraficos(self, ficheiro_base_de_dados):
         self.c.execute('''select * from escolas''')
-        sd.graficoInst(self, ficheiro_base_de_dados)
+        #sd.graficoIP(self, self.c.fetchall())
+	sd.graficoDP(self, self.c.fetchall())
         pass
     pass
 tr = Trabalho()
 tr.passagem_de_dados('cna131fresultados.xls', 'trabalho')
 tr.estatistica1('trabalho')
 tr.estatistica2('trabalho')
-#tr.criacaoGraficos('trabalho')
+tr.criacaoGraficos('trabalho')
