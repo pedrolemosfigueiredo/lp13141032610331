@@ -235,12 +235,13 @@ def graficoDV(mother,lista):
 		arrayDistrito.append(row[0])
 		arrayVaga.append(row[2])
 		pass
+	figs, ax = graf.subplots()
 	x = np.arange(len(arrayDistrito))
-	graf.xlabel(u'distritos')
-	graf.ylabel('vagas')
-	graf.title(u'Vagas sobrantes por distrito')
-	graf.yticks(x,unicode(arrayDistrito))
-	graf.barh(x, arrayVaga, align='center')
+	ax.set_xlabel('distritos')
+	ax.set_ylabel('vagas')
+	ax.set_title('Vagas sobrantes por distrito')
+	ax.set_xticklabels(zip(arrayDistrito), rotation = 90)
+	ax.bar(x, arrayVaga)
 	graf.show()
 	pass
 # Constrói um gráfico que mostra em permilagem os alunos que 
@@ -251,11 +252,12 @@ def graficoDP(mother,lista):
 		arrayDistrito.append(row[0])
 		arrayPermilagem.append(row[3])
 		pass
+	figs, ax = graf.subplots()
 	x = np.arange(len(arrayDistrito))
-	graf.xlabel(u'distritos')
-	graf.ylabel('permilagem')
-	graf.title(u'Permilagem de alunos colocados por distrito')
-	graf.yticks(x,unicode(arrayDistrito))
-	graf.barh(x, arrayPermilagem, align='center')
+	ax.set_xlabel('distritos')
+	ax.set_ylabel('permilagem')
+	ax.set_title('Permilagem de alunos colocados por distrito')
+	ax.set_xticklabels(zip(arrayDistrito), rotation = 90)
+	ax.bar(x, arrayPermilagem)
 	graf.show()
 	pass

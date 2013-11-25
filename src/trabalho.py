@@ -21,7 +21,7 @@ class Trabalho:
         self.c = self.conexao.cursor()
         self.conexao.text_factory = str
         self.c.execute('drop table if exists resultados_cna')
-        #query para criação da ta5ela na base de dados
+        #query para criação da tabela na base de dados
         self.c.execute('''create table if not exists resultados_cna
                         (cInstituicao int, cCurso int,
                         instituicao text, curso text, grau text,
@@ -71,9 +71,10 @@ class Trabalho:
         sd.tabela_distritos(self.c.fetchall())
         pass
     def criacaoGraficos(self, ficheiro_base_de_dados):
-        self.c.execute('''select * from escolas''')
-        #sd.graficoIP(self, self.c.fetchall())
-	sd.graficoDP(self, self.c.fetchall())
+        #self.c.execute('''select * from escolas''')
+        #sd.graficoIV(self, self.c.fetchall())
+        self.c.execute('''select * from distritos''')        
+        sd.graficoDV(self, self.c.fetchall())
         pass
     pass
 tr = Trabalho()
