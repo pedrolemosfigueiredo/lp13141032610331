@@ -71,10 +71,10 @@ class Trabalho:
         sd.tabela_distritos(self.c.fetchall())
         pass
     def criacaoGraficos(self, ficheiro_base_de_dados):
-        #self.c.execute('''select * from escolas''')
-        #sd.graficoIV(self, self.c.fetchall())
-        self.c.execute('''select * from distritos''')        
-        sd.graficoDV(self, self.c.fetchall())
+        self.c.execute('''select * from escolas''')
+        sd.graficoInst(self, self.c.fetchall())
+        #self.c.execute('''select * from distritos''')        
+        #sd.graficoDP(self, self.c.fetchall())
         pass
     pass
 tr = Trabalho()

@@ -161,6 +161,7 @@ def tabela_escolas(lista):
 	pass
 #Constrói um gráfico que demonstra o nº de alunos colocados por 
 #instituição
+
 def graficoInst(mother, lista):
 	arrayInstituicao = []
 	arrayEntradas = []
@@ -168,17 +169,19 @@ def graficoInst(mother, lista):
 		arrayInstituicao.append(row[0])
 		arrayEntradas.append(row[1])
 		pass
-	print arrayEntradas
+	figs, ax = graf.subplots()
 	x = np.arange(len(arrayInstituicao))
-	graf.xlabel(u'instituições')
-	graf.ylabel('entradas')
-	graf.title(u'Entradas em instituições')
-	graf.yticks(x, unicode(arrayInstituicao))
-	graf.barh(x, arrayEntradas, align='center')
+	ax.set_xlabel(u'instituições')
+	ax.set_ylabel('entradas')
+	ax.set_title(u'Entradas em instituições')
+	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	ax.bar(x, arrayEntradas)
 	graf.show()
 	pass 
+	
 #Constrói um gráfico que demonstra o nº de vagas sobrantes por 
 #instituição
+
 def graficoIV(mother, lista):
 	arrayInstituicao = []
 	arrayVagas = []
@@ -186,14 +189,15 @@ def graficoIV(mother, lista):
 		arrayInstituicao.append(row[0])
 		arrayVagas.append(row[2])
 		pass
-	print arrayVagas
-	x = np.arange(len(arrayInstituicao))
-	graf.xlabel(u'instituições')
-	graf.ylabel('vagas')
-	graf.title(u'Vagas em instituições')
-	graf.yticks(x, unicode(arrayInstituicao))
-	graf.barh(x, arrayVagas, align='center')
+	figs, ax = graf.subplots()
+	x = np.arange(len(arrayInstituicao) - 1)
+	ax.set_xlabel(u'instituições')
+	ax.set_ylabel('vagas')
+	ax.set_title(u'Vagas em instituições')
+	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	graf.bar(x, arrayVagas)
 	graf.show()
+	print arrayVagas
 	pass
 # Constrói o Gráfico das estatísticas que mostra a percentagem de alunos
 # numa instituição em relação ao total de alunos
@@ -204,13 +208,13 @@ def graficoIP(mother, lista):
 		arrayInstituicao.append(row[0])
 		arrayPercentagem.append(row[3])
 		pass
-	print arrayPercentagem
-	x = np.arange(len(arrayInstituicao))
-	graf.xlabel(u'instituições')
-	graf.ylabel('Percentagem')
-	graf.title(u'Percentagem de alunos em relação ao total')
-	graf.yticks(x, unicode(arrayInstituicao))
-	graf.barh(x, arrayPercentagem, align='center')
+	figs, ax = graf.subplots()
+	x = np.arange(len(arrayInstituicao) - 1)
+	ax.set_xlabel(u'instituições')
+	ax.set_ylabel('Percentagem')
+	ax.set_title(u'Percentagem de alunos em relação ao total')
+	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	graf.bar(x, arrayPercentagem)
 	graf.show()
 	pass
 # Constrói um gráfico que mostra os alunos colocados por distrito
@@ -220,12 +224,13 @@ def graficoDA(mother,lista):
 		arrayDistrito.append(row[0])
 		arrayAluno.append(row[1])
 		pass
+	figs, ax = graf.subplots()
 	x = np.arange(len(arrayDistrito))
-	graf.xlabel(u'distritos')
-	graf.ylabel('alunos')
-	graf.title(u'Alunos colocados por distrito')
-	graf.yticks(x,unicode(arrayDistrito))
-	graf.barh(x, arrayAluno, align='center')
+	ax.set_xlabel('distritos')
+	ax.set_ylabel('alunos')
+	ax.set_title('Alunos colocados por distrito')
+	ax.set_xticklabels(zip(arrayDistrito), rotation = 90)
+	ax.bar(x, arrayAluno)
 	graf.show()
 	pass
 #Constrói um gráfico que mostra as vagas sobrantes po distrito
@@ -236,7 +241,7 @@ def graficoDV(mother,lista):
 		arrayVaga.append(row[2])
 		pass
 	figs, ax = graf.subplots()
-	x = np.arange(len(arrayDistrito))
+	x = np.arange(len(arrayVDistrito))
 	ax.set_xlabel('distritos')
 	ax.set_ylabel('vagas')
 	ax.set_title('Vagas sobrantes por distrito')
