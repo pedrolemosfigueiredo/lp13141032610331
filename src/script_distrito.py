@@ -266,3 +266,27 @@ def graficoDP(mother,lista):
 	ax.bar(x, arrayPermilagem)
 	graf.show()
 	pass
+def graficoDEN(mother,lista):
+	arrayDistrito, arrayVaga = [],[]
+	print 'olá'
+	for row in lista:
+		if ((row[0] == 'Braga') | (row[0] == 'Vila Real') |
+		(row[0] == 'Aveiro') | (row[0] == 'Bragança') | (row[0] == 'Coimbra')|
+		(row[0] == 'Guarda') | (row[0] == 'Porto') | (row[0] == 'Viseu')):
+			arrayDistrito.append(row[0])
+			arrayVaga.append(row[2])
+		pass
+		#if row[0] == 'Braga':
+			#arrayDistrito.append(row[0])
+			#arrayEntrada.append(row[1])
+			#pass
+		#pass
+	figs, ax = graf.subplots()
+	x = np.arange(len(arrayDistrito))
+	ax.set_xlabel('distritos')
+	ax.set_ylabel('Entradas')
+	ax.set_title('Alunos colocados por distrito no Norte')
+	ax.set_xticklabels(zip(arrayDistrito), rotation = 90)
+	ax.bar(x, arrayVaga)
+	graf.show()
+	pass
