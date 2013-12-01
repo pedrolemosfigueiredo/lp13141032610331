@@ -83,33 +83,65 @@ class Trabalho:
         sd.graficoDES(self, self.c.fetchall())
         pass
     def criacaoGraficoVagasNorte(self,ficheiro_base_de_dados):
-		self.c.execute('''select * from distritos''')        
-		sd.graficoDVN(self, self.c.fetchall())
-		pass
+        self.c.execute('''select * from distritos''')        
+        sd.graficoDVN(self, self.c.fetchall())
+        pass
     def criacaoGraficoVagasCentro(self,ficheiro_base_de_dados):
-		self.c.execute('''select * from distritos''')        
-		sd.graficoDVC(self, self.c.fetchall())
-		pass
+        self.c.execute('''select * from distritos''')        
+        sd.graficoDVC(self, self.c.fetchall())
+        pass
     def criacaoGraficoVagasSul(self,ficheiro_base_de_dados):
-		self.c.execute('''select * from distritos''')
-		sd.graficoDVS(self, self.c.fetchall())
-		pass
+        self.c.execute('''select * from distritos''')
+        sd.graficoDVS(self, self.c.fetchall())
+        pass
     def criacaoGraficoPermilagemNorte(self,ficheiro_base_de_dados):
-		self.c.execute('''select * from distritos''')
-		sd.graficoDPN(self, self.c.fetchall())
-		pass
+        self.c.execute('''select * from distritos''')
+        sd.graficoDPN(self, self.c.fetchall())
+        pass
     def criacaoGraficoPermilagemCentro(self,ficheiro_base_de_dados):
-		self.c.execute('''select * from distritos''')
-		sd.graficoDPC(self, self.c.fetchall())
-		pass
+        self.c.execute('''select * from distritos''')
+        sd.graficoDPC(self, self.c.fetchall())
+        pass
     def criacaoGraficoPermilagemSul(self,ficheiro_base_de_dados):
-		self.c.execute('''select * from distritos''')
-		sd.graficoDPS(self, self.c.fetchall())
-		pass
-    def criacaoGraficoEntradasEscolas(self,ficheiro_base_de_dados):
-		self.c.execute('''select*from escolas''')
-		sd.graficoEscolasEntradas(self, self.c.fetchall())
-		pass
+        self.c.execute('''select * from distritos''')
+        sd.graficoDPS(self, self.c.fetchall())
+        pass
+    def criacaoGraficoEscolasEntradas(self,ficheiro_base_de_dados):
+        self.c.execute('''select*from escolas''')
+        sd.graficoEscolasEntradas(self, self.c.fetchall())
+        pass
+    def criacaoGraficoEscolasVagas(self,ficheiro_base_de_dados):
+        self.c.execute('''select*from escolas''')
+        sd.graficoEscolasVagas(self, self.c.fetchall())
+        pass
+    def criacaoGraficoEscolasPercentagem(self,ficheiro_base_de_dados):
+        self.c.execute('''select*from escolas''')
+        sd.graficoEscolasPercentagem(self, self.c.fetchall())
+        pass
+    def criacaoGraficoInstitutosEntradas(self,ficheiro_base_de_dados):
+        self.c.execute('''select*from escolas''')
+        sd.graficoInstitutosEntradas(self, self.c.fetchall())
+        pass
+    def criacaoGraficoInstitutosVagas(self,ficheiro_base_de_dados):
+        self.c.execute('''select*from escolas''')
+        sd.graficoInstitutosVagas(self, self.c.fetchall())
+        pass
+    def criacaoGraficoInstitutosPercentagem(self,ficheiro_base_de_dados):
+        self.c.execute('''select*from escolas''')
+        sd.graficoInstitutosPercentagem(self, self.c.fetchall())
+        pass
+    def criacaoGraficoUniversidadesEntradas(self,ficheiro_base_de_dados):
+        self.c.execute('''select*from escolas''')
+        sd.graficoUniversidadesEntradas(self, self.c.fetchall())
+        pass
+    def criacaoGraficoUniversidadesVagas(self,ficheiro_base_de_dados):
+        self.c.execute('''select*from escolas''')
+        sd.graficoUniversidadesVagas(self, self.c.fetchall())
+        pass
+    def criacaoGraficoUniversidadesPercentagem(self,ficheiro_base_de_dados):
+        self.c.execute('''select*from escolas''')
+        sd.graficoUniversidadesPercentagem(self, self.c.fetchall())
+        pass
 #tr = Trabalho()
 #tr.passagem_de_dados('cna131fresultados.xls', 'trabalho')
 #tr.estatistica1('trabalho')

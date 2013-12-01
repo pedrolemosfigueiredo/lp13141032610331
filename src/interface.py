@@ -69,17 +69,34 @@ class MyFrame(wx.Frame):
 		self.Bind(wx.EVT_BUTTON, self.criar_grafico_entradas_escolas, self.button_entradas_escolas)
 		
 		self.button_vagas_escolas = wx.Button(self.notebook_1_pane_graficos_intituicoes, -1, "vagas")
+		self.Bind(wx.EVT_BUTTON, self.criar_grafico_vagas_escolas, self.button_vagas_escolas)
+		
 		self.button_percentagem_escolas = wx.Button(self.notebook_1_pane_graficos_intituicoes, -1, "percentagem")
+		self.Bind(wx.EVT_BUTTON, self.criar_grafico_percentagem_escolas, self.button_percentagem_escolas)
+		
 		self.static_line_3 = wx.StaticLine(self.notebook_1_pane_graficos_intituicoes, -1, style=wx.LI_VERTICAL)
 		self.label_7 = wx.StaticText(self.notebook_1_pane_graficos_intituicoes, -1, u"Criação do gráfico dos politécnicos")
+		
 		self.button_entradas_politecnicos = wx.Button(self.notebook_1_pane_graficos_intituicoes, -1, "entradas")
+		self.Bind(wx.EVT_BUTTON, self.criar_grafico_entradas_institutos, self.button_entradas_politecnicos)
+		
 		self.button_vagas_politecnicos = wx.Button(self.notebook_1_pane_graficos_intituicoes, -1, "vagas")
+		self.Bind(wx.EVT_BUTTON, self.criar_grafico_vagas_institutos, self.button_vagas_politecnicos)
+		
 		self.button_percentagem_politecnicos = wx.Button(self.notebook_1_pane_graficos_intituicoes, -1, "percentagem")
+		self.Bind(wx.EVT_BUTTON, self.criar_grafico_percentagem_institutos, self.button_percentagem_politecnicos)
+		
 		self.static_line_4 = wx.StaticLine(self.notebook_1_pane_graficos_intituicoes, -1, style=wx.LI_VERTICAL)
 		self.label_8 = wx.StaticText(self.notebook_1_pane_graficos_intituicoes, -1, u"criação do gráfico das universidades")
+		
 		self.button_entradas_universidades = wx.Button(self.notebook_1_pane_graficos_intituicoes, -1, "entradas")
+		self.Bind(wx.EVT_BUTTON, self.criar_grafico_entradas_universidades, self.button_entradas_universidades)
+		
 		self.button_vagas_universidades = wx.Button(self.notebook_1_pane_graficos_intituicoes, -1, "vagas")
-		self.button_Percentagem_Universidades = wx.Button(self.notebook_1_pane_graficos_intituicoes, -1, "percentagem")
+		self.Bind(wx.EVT_BUTTON, self.criar_grafico_vagas_universidades, self.button_vagas_universidades)
+		
+		self.button_percentagem_universidades = wx.Button(self.notebook_1_pane_graficos_intituicoes, -1, "percentagem")
+		self.Bind(wx.EVT_BUTTON, self.criar_grafico_percentagem_universidades, self.button_percentagem_universidades)
 		
 		self.__set_properties()
 		self.__do_layout()
@@ -131,7 +148,31 @@ class MyFrame(wx.Frame):
 		self.tr.criacaoGraficoPermilagemSul('trabalho')
 		event.Skip()
 	def criar_grafico_entradas_escolas(self,event):
-		self.tr.criacaoGraficoEntradasEscolas('trabalho')
+		self.tr.criacaoGraficoEscolasEntradas('trabalho')
+		event.Skip()
+	def criar_grafico_vagas_escolas(self,event):
+		self.tr.criacaoGraficoEscolasVagas('trabalho')
+		event.Skip()
+	def criar_grafico_percentagem_escolas(self,event):
+		self.tr.criacaoGraficoEscolasPercentagem('trabalho')
+		event.Skip()
+	def criar_grafico_entradas_institutos(self,event):
+		self.tr.criacaoGraficoInstitutosEntradas('trabalho')
+		event.Skip()
+	def criar_grafico_vagas_institutos(self,event):
+		self.tr.criacaoGraficoInstitutosVagas('trabalho')
+		event.Skip()
+	def criar_grafico_percentagem_institutos(self,event):
+		self.tr.criacaoGraficoInstitutosPercentagem('trabalho')
+		event.Skip()
+	def criar_grafico_entradas_universidades(self,event):
+		self.tr.criacaoGraficoUniversidadesEntradas('trabalho')
+		event.Skip()
+	def criar_grafico_vagas_universidades(self,event):
+		self.tr.criacaoGraficoUniversidadesVagas('trabalho')
+		event.Skip()
+	def criar_grafico_percentagem_universidades(self,event):
+		self.tr.criacaoGraficoUniversidadesPercentagem('trabalho')
 		event.Skip()
 #fim de funções eventos dos botões
 	def __set_properties(self):
@@ -198,7 +239,7 @@ class MyFrame(wx.Frame):
 		sizer_21.Add(self.label_8, 0, 0, 0)
 		sizer_21.Add(self.button_entradas_universidades, 0, 0, 0)
 		sizer_21.Add(self.button_vagas_universidades, 0, 0, 0)
-		sizer_21.Add(self.button_Percentagem_Universidades, 0, 0, 0)
+		sizer_21.Add(self.button_percentagem_universidades, 0, 0, 0)
 		sizer_18.Add(sizer_21, 1, wx.EXPAND, 0)
 		self.notebook_1_pane_graficos_intituicoes.SetSizer(sizer_18)
 		self.notebook_1.AddPage(self.notebook_1_pane_db, "base de dados")

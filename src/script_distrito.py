@@ -451,7 +451,7 @@ def graficoEscolasVagas(mother, lista):
 	for row in lista:
 		if 'Escola' in row[0]:
 			arrayInstituicao.append(row[0])
-			arrayVagas.append(row[1])
+			arrayVagas.append(row[2])
 			pass
 		pass
 	figs, ax = graf.subplots()
@@ -461,5 +461,131 @@ def graficoEscolasVagas(mother, lista):
 	ax.set_title(u'vagas em escolas')
 	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
 	ax.bar(x, arrayVagas)
+	graf.show()
+	pass
+def graficoEscolasPercentagem(mother, lista):
+	arrayInstituicao = []
+	arrayPercentagem = []
+	for row in lista:
+		if 'Escola' in row[0]:
+			arrayInstituicao.append(row[0])
+			arrayPercentagem.append(row[3])
+			pass
+		pass
+	figs, ax = graf.subplots()
+	x = np.arange(len(arrayInstituicao))
+	ax.set_xlabel(u'instituições')
+	ax.set_ylabel('entradas')
+	ax.set_title(u'Percentagem de alunos em relação ao total')
+	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	ax.bar(x, arrayPercentagem)
+	graf.show()
+	pass
+def graficoInstitutosEntradas(mother, lista):
+	arrayInstituicao = []
+	arrayEntradas = []
+	for row in lista:
+		if (('Instituto' in row[0])|('ISCTE' in row[0])):
+			arrayInstituicao.append(row[0])
+			arrayEntradas.append(row[1])
+			pass
+		pass
+	figs, ax = graf.subplots()
+	x = np.arange(len(arrayInstituicao))
+	ax.set_xlabel(u'instituições')
+	ax.set_ylabel('entradas')
+	ax.set_title(u'Entrada de alunos em institutos')
+	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	ax.bar(x, arrayEntradas)
+	graf.show()
+	pass
+def graficoInstitutosVagas(mother, lista):
+	arrayInstituicao = []
+	arrayVagas = []
+	for row in lista:
+		if (('Instituto' in row[0])|('ISCTE' in row[0])):
+			arrayInstituicao.append(row[0])
+			arrayVagas.append(row[2])
+			pass
+		pass
+	figs, ax = graf.subplots()
+	x = np.arange(len(arrayInstituicao))
+	ax.set_xlabel(u'instituições')
+	ax.set_ylabel('entradas')
+	ax.set_title(u'vagas em institutos')
+	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	ax.bar(x, arrayVagas)
+	graf.show()
+	pass
+def graficoInstitutosPercentagem(mother, lista):
+	arrayInstituicao = []
+	arrayPercentagem = []
+	for row in lista:
+		if (('Instituto' in row[0])|('ISCTE' in row[0])):
+			arrayInstituicao.append(row[0])
+			arrayPercentagem.append(row[3])
+			pass
+		pass
+	figs, ax = graf.subplots()
+	x = np.arange(len(arrayInstituicao))
+	ax.set_xlabel(u'instituições')
+	ax.set_ylabel('entradas')
+	ax.set_title(u'Percentagem de alunos em relação ao total')
+	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	ax.bar(x, arrayPercentagem)
+	graf.show()
+	pass
+def graficoUniversidadesEntradas(mother,lista):
+	arrayInstituicao = []
+	arrayEntradas = []
+	for row in lista:
+		if (('Universidade') in row[0]):
+			arrayInstituicao.append(row[0])
+			arrayEntradas.append(row[1])
+			pass
+		pass
+	figs, ax = graf.subplots()
+	x = np.arange(len(arrayInstituicao))
+	ax.set_xlabel(u'instituições')
+	ax.set_ylabel('entradas')
+	ax.set_title(u'entradas de alunos em universidades')
+	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	ax.bar(x, arrayEntradas)
+	graf.show()
+	pass
+def graficoUniversidadesVagas(mother,lista):
+	arrayInstituicao = []
+	arrayVagas = []
+	for row in lista:
+		if (('Universidade') in row[0]):
+			arrayInstituicao.append(row[0])
+			arrayVagas.append(row[2])
+			pass
+		pass
+	figs, ax = graf.subplots()
+	x = np.arange(len(arrayInstituicao))
+	ax.set_xlabel(u'instituições')
+	ax.set_ylabel('entradas')
+	ax.set_title(u'vagas em universidades')
+	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	ax.bar(x, arrayVagas)
+	graf.show()
+	pass
+def graficoUniversidadesPercentagem(mother,lista):
+	arrayInstituicao = []
+	arrayPercentagem = []
+	for row in lista:
+		if (('Universidade') in row[0]):
+			arrayInstituicao.append(row[0])
+			arrayPercentagem.append(row[3])
+			pass
+		pass
+	figs, ax = graf.subplots()
+	x = np.arange(len(arrayInstituicao))
+	ax.set_xlabel(u'instituições')
+	ax.set_ylabel('entradas')
+	ax.set_title(u'Percentagens de aluno em relação ao total')
+	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	ax.bar(x, arrayPercentagem)
 	graf.show()
 	pass
