@@ -432,7 +432,7 @@ def graficoEscolasEntradas(mother, lista):
 	arrayEntradas = []
 	for row in lista:
 		if 'Escola' in row[0]:
-			arrayInstituicao.append(row[0])
+			arrayInstituicao.append(detectUpper(row[0]))
 			arrayEntradas.append(row[1])
 			pass
 		pass
@@ -450,7 +450,7 @@ def graficoEscolasVagas(mother, lista):
 	arrayVagas = []
 	for row in lista:
 		if 'Escola' in row[0]:
-			arrayInstituicao.append(row[0])
+			arrayInstituicao.append(detectUpper(row[0]))
 			arrayVagas.append(row[2])
 			pass
 		pass
@@ -468,7 +468,7 @@ def graficoEscolasPercentagem(mother, lista):
 	arrayPercentagem = []
 	for row in lista:
 		if 'Escola' in row[0]:
-			arrayInstituicao.append(row[0])
+			arrayInstituicao.append(detectUpper(row[0]))
 			arrayPercentagem.append(row[3])
 			pass
 		pass
@@ -486,7 +486,7 @@ def graficoInstitutosEntradas(mother, lista):
 	arrayEntradas = []
 	for row in lista:
 		if (('Instituto' in row[0])|('ISCTE' in row[0])):
-			arrayInstituicao.append(row[0])
+			arrayInstituicao.append(detectUpper(row[0]))
 			arrayEntradas.append(row[1])
 			pass
 		pass
@@ -504,7 +504,7 @@ def graficoInstitutosVagas(mother, lista):
 	arrayVagas = []
 	for row in lista:
 		if (('Instituto' in row[0])|('ISCTE' in row[0])):
-			arrayInstituicao.append(row[0])
+			arrayInstituicao.append(detectUpper(row[0]))
 			arrayVagas.append(row[2])
 			pass
 		pass
@@ -522,7 +522,7 @@ def graficoInstitutosPercentagem(mother, lista):
 	arrayPercentagem = []
 	for row in lista:
 		if (('Instituto' in row[0])|('ISCTE' in row[0])):
-			arrayInstituicao.append(row[0])
+			arrayInstituicao.append(detectUpper(row[0]))
 			arrayPercentagem.append(row[3])
 			pass
 		pass
@@ -540,7 +540,7 @@ def graficoUniversidadesEntradas(mother,lista):
 	arrayEntradas = []
 	for row in lista:
 		if (('Universidade') in row[0]):
-			arrayInstituicao.append(row[0])
+			arrayInstituicao.append(detectUpper(row[0]))
 			arrayEntradas.append(row[1])
 			pass
 		pass
@@ -558,7 +558,7 @@ def graficoUniversidadesVagas(mother,lista):
 	arrayVagas = []
 	for row in lista:
 		if (('Universidade') in row[0]):
-			arrayInstituicao.append(row[0])
+			arrayInstituicao.append(detectUpper(row[0]))
 			arrayVagas.append(row[2])
 			pass
 		pass
@@ -576,7 +576,7 @@ def graficoUniversidadesPercentagem(mother,lista):
 	arrayPercentagem = []
 	for row in lista:
 		if (('Universidade') in row[0]):
-			arrayInstituicao.append(row[0])
+			arrayInstituicao.append(detectUpper(row[0]))
 			arrayPercentagem.append(row[3])
 			pass
 		pass
@@ -588,4 +588,14 @@ def graficoUniversidadesPercentagem(mother,lista):
 	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
 	ax.bar(x, arrayPercentagem)
 	graf.show()
+	pass
+	
+def detectUpper(x):
+	b = ''
+	for letter in x:
+		if letter.isupper() == True:
+			b += letter
+			pass
+		pass
+	return b
 	pass
