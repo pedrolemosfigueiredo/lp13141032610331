@@ -30,21 +30,44 @@ class MyFrame(wx.Frame):
 		self.label_3 = wx.StaticText(self.notebook_1_pane_graficos_distritos, -1, u"Criação das estatísticas dos institutos do Norte")
 		
 		self.button_entradas_norte = wx.Button(self.notebook_1_pane_graficos_distritos, -1, "entradas")
+		self.Bind(wx.EVT_BUTTON, self.criar_grafico_entradas_norte, self.button_entradas_norte)
+		
 		self.button_vagas_norte = wx.Button(self.notebook_1_pane_graficos_distritos, -1, "vagas")
+		self.Bind(wx.EVT_BUTTON, self.criar_grafico_vagas_norte, self.button_vagas_norte)
+		
 		self.button_permilagem_norte = wx.Button(self.notebook_1_pane_graficos_distritos, -1, "permilagem")
+		self.Bind(wx.EVT_BUTTON, self.criar_grafico_permilagem_norte, self.button_permilagem_norte)
+		
 		self.static_line_1 = wx.StaticLine(self.notebook_1_pane_graficos_distritos, -1, style=wx.LI_VERTICAL)
 		self.label_4 = wx.StaticText(self.notebook_1_pane_graficos_distritos, -1, u"Criação das estatísticas dos institutos do Centro")
+		
 		self.button_entradas_centro = wx.Button(self.notebook_1_pane_graficos_distritos, -1, "entradas")
+		self.Bind(wx.EVT_BUTTON, self.criar_grafico_entradas_centro, self.button_entradas_centro)
+		
 		self.button_vagas_centro = wx.Button(self.notebook_1_pane_graficos_distritos, -1, "vagas")
+		self.Bind(wx.EVT_BUTTON, self.criar_grafico_vagas_centro, self.button_vagas_centro)
+		
 		self.button_permilagem_centro = wx.Button(self.notebook_1_pane_graficos_distritos, -1, "permilagem")
+		self.Bind(wx.EVT_BUTTON, self.criar_grafico_permilagem_centro, self.button_permilagem_centro)
+		
 		self.static_line_2 = wx.StaticLine(self.notebook_1_pane_graficos_distritos, -1, style=wx.LI_VERTICAL)
 		self.label_5 = wx.StaticText(self.notebook_1_pane_graficos_distritos, -1, u"Criação das estatísticas do Sul")
+		
 		self.button_entradas_sul = wx.Button(self.notebook_1_pane_graficos_distritos, -1, "entradas")
+		self.Bind(wx.EVT_BUTTON, self.criar_grafico_entradas_sul, self.button_entradas_sul)
+		
 		self.button_vagas_sul = wx.Button(self.notebook_1_pane_graficos_distritos, -1, "vagas")
+		self.Bind(wx.EVT_BUTTON, self.criar_grafico_vagas_sul, self.button_vagas_sul)
+		
 		self.button_permilagem_sul = wx.Button(self.notebook_1_pane_graficos_distritos, -1, "permilagem")
+		self.Bind(wx.EVT_BUTTON, self.criar_grafico_permilagem_Sul, self.button_permilagem_sul)
+		
 		self.notebook_1_pane_graficos_intituicoes = wx.Panel(self.notebook_1, -1)
 		self.label_6 = wx.StaticText(self.notebook_1_pane_graficos_intituicoes, -1, u"Criação do gráfico das escolas")
+		
 		self.button_entradas_escolas = wx.Button(self.notebook_1_pane_graficos_intituicoes, -1, "entradas")
+		self.Bind(wx.EVT_BUTTON, self.criar_grafico_entradas_escolas, self.button_entradas_escolas)
+		
 		self.button_vagas_escolas = wx.Button(self.notebook_1_pane_graficos_intituicoes, -1, "vagas")
 		self.button_percentagem_escolas = wx.Button(self.notebook_1_pane_graficos_intituicoes, -1, "percentagem")
 		self.static_line_3 = wx.StaticLine(self.notebook_1_pane_graficos_intituicoes, -1, style=wx.LI_VERTICAL)
@@ -63,15 +86,54 @@ class MyFrame(wx.Frame):
 		
 		# end wxGlade
 		pass
-        
+#início de funções eventos dos botões.......................................................................    
 	def criar_db(self, event):
 		self.tr.passagem_de_dados('cna131fresultados.xls', 'trabalho')
 		event.Skip()
+		pass
 	
 	def criar_estatisticas(self, event):
 		self.tr.estatistica1('trabalho')
 		self.tr.estatistica2('trabalho')
 		event.Skip()
+		pass
+	def criar_grafico_entradas_norte(self, event):
+		self.tr.criacaoGraficoEntradasNorte('trabalho')
+		event.Skip()
+		pass
+	def criar_grafico_entradas_centro(self, event):
+		self.tr.criacaoGraficoEntradasCentro('trabalho')
+		event.Skip()
+		pass
+	def criar_grafico_entradas_sul(self, event):
+		self.tr.criacaoGraficoEntradasSul('trabalho')
+		event.Skip()
+		pass
+	def criar_grafico_vagas_norte(self, event):
+		self.tr.criacaoGraficoVagasNorte('trabalho')
+		event.Skip()
+		pass
+	def criar_grafico_vagas_centro(self, event):
+		self.tr.criacaoGraficoVagasCentro('trabalho')
+		event.Skip()
+		pass
+	def criar_grafico_vagas_sul(self, event):
+		self.tr.criacaoGraficoVagasSul('trabalho')
+		event.Skip()
+		pass
+	def criar_grafico_permilagem_norte(self,event):
+		self.tr.criacaoGraficoPermilagemNorte('trabalho')
+		event.Skip()
+	def criar_grafico_permilagem_centro(self,event):
+		self.tr.criacaoGraficoPermilagemCentro('trabalho')
+		event.Skip()
+	def criar_grafico_permilagem_Sul(self,event):
+		self.tr.criacaoGraficoPermilagemSul('trabalho')
+		event.Skip()
+	def criar_grafico_entradas_escolas(self,event):
+		self.tr.criacaoGraficoEntradasEscolas('trabalho')
+		event.Skip()
+#fim de funções eventos dos botões
 	def __set_properties(self):
 		# begin wxGlade: MyFrame.__set_properties
 		self.SetTitle(u"Trabalho prático")

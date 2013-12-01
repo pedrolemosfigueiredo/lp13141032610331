@@ -267,26 +267,199 @@ def graficoDP(mother,lista):
 	graf.show()
 	pass
 def graficoDEN(mother,lista):
-	arrayDistrito, arrayVaga = [],[]
-	print 'olá'
+	arrayDistrito, arrayEntradas = [],[]
 	for row in lista:
 		if ((row[0] == 'Braga') | (row[0] == 'Vila Real') |
 		(row[0] == 'Aveiro') | (row[0] == 'Bragança') | (row[0] == 'Coimbra')|
 		(row[0] == 'Guarda') | (row[0] == 'Porto') | (row[0] == 'Viseu')):
 			arrayDistrito.append(row[0])
-			arrayVaga.append(row[2])
+			arrayEntradas.append(row[1])
 		pass
-		#if row[0] == 'Braga':
-			#arrayDistrito.append(row[0])
-			#arrayEntrada.append(row[1])
-			#pass
-		#pass
 	figs, ax = graf.subplots()
 	x = np.arange(len(arrayDistrito))
 	ax.set_xlabel('distritos')
 	ax.set_ylabel('Entradas')
 	ax.set_title('Alunos colocados por distrito no Norte')
 	ax.set_xticklabels(zip(arrayDistrito), rotation = 90)
-	ax.bar(x, arrayVaga)
+	ax.bar(x, arrayEntradas)
+	graf.show()
+	pass
+def graficoDEC(mother,lista):
+	arrayDistrito, arrayEntradas = [],[]
+	print 'olá'
+	for row in lista:
+		if ((row[0] == 'Lisboa') | (row[0] == 'Leiria') |
+		(row[0] == 'Santarém') | (row[0] == 'Castelo Branco') | 
+		(row[0] == 'Setúbal') | (row[0] == 'Portalegre')):
+			arrayDistrito.append(row[0])
+			arrayEntradas.append(row[1])
+		pass
+	figs, ax = graf.subplots()
+	x = np.arange(len(arrayDistrito))
+	ax.set_xlabel('distritos')
+	ax.set_ylabel('Entradas')
+	ax.set_title('Alunos colocados por distrito no Centro')
+	ax.set_xticklabels(zip(arrayDistrito), rotation = 90)
+	ax.bar(x, arrayEntradas)
+	graf.show()
+	pass
+def graficoDES(mother,lista):
+	arrayDistrito, arrayEntradas = [],[]
+	for row in lista:
+		if ((row[0] == 'Faro') | (row[0] == 'Évora') |
+		(row[0] == 'Beja')):
+			arrayDistrito.append(row[0])
+			arrayEntradas.append(row[1])
+		pass
+	figs, ax = graf.subplots()
+	x = np.arange(len(arrayDistrito))
+	ax.set_xlabel('distritos')
+	ax.set_ylabel('Entradas')
+	ax.set_title('Alunos colocados por distrito no Sul')
+	ax.set_xticklabels(zip(arrayDistrito), rotation = 90)
+	ax.bar(x, arrayEntradas)
+	graf.show()
+	pass
+def graficoDVN(mother,lista):
+	arrayDistrito, arrayVagas = [],[]
+	for row in lista:
+		if ((row[0] == 'Braga') | (row[0] == 'Vila Real') |
+		(row[0] == 'Aveiro') | (row[0] == 'Bragança') | (row[0] == 'Coimbra')|
+		(row[0] == 'Guarda') | (row[0] == 'Porto') | (row[0] == 'Viseu')):
+			arrayDistrito.append(row[0])
+			arrayVagas.append(row[2])
+		pass
+	figs, ax = graf.subplots()
+	x = np.arange(len(arrayDistrito))
+	ax.set_xlabel('distritos')
+	ax.set_ylabel('Entradas')
+	ax.set_title('Vagas sobrantes por distrito no Sul')
+	ax.set_xticklabels(zip(arrayDistrito), rotation = 90)
+	ax.bar(x, arrayVagas)
+	graf.show()
+	pass
+def graficoDVC(mother,lista):
+	arrayDistrito, arrayVagas = [],[]
+	print 'olá'
+	for row in lista:
+		if ((row[0] == 'Lisboa') | (row[0] == 'Leiria') |
+		(row[0] == 'Santarém') | (row[0] == 'Castelo Branco') | 
+		(row[0] == 'Setúbal') | (row[0] == 'Portalegre')):
+			arrayDistrito.append(row[0])
+			arrayVagas.append(row[2])
+		pass
+	figs, ax = graf.subplots()
+	x = np.arange(len(arrayDistrito))
+	ax.set_xlabel('distritos')
+	ax.set_ylabel('Entradas')
+	ax.set_title('Alunos colocados por distrito no Centro')
+	ax.set_xticklabels(zip(arrayDistrito), rotation = 90)
+	ax.bar(x, arrayVagas)
+	graf.show()
+	pass
+def graficoDVS(mother,lista):
+	arrayDistrito, arrayVagas = [],[]
+	for row in lista:
+		if ((row[0] == 'Faro') | (row[0] == 'Évora') |
+		(row[0] == 'Beja')):
+			arrayDistrito.append(row[0])
+			arrayVagas.append(row[2])
+		pass
+	figs, ax = graf.subplots()
+	x = np.arange(len(arrayDistrito))
+	ax.set_xlabel('distritos')
+	ax.set_ylabel('Entradas')
+	ax.set_title('Alunos colocados por distrito no Sul')
+	ax.set_xticklabels(zip(arrayDistrito), rotation = 90)
+	ax.bar(x, arrayVagas)
+	graf.show()
+	pass
+def graficoDPN(mother,lista):
+	arrayDistrito, arrayPermilagem = [],[]
+	for row in lista:
+		if ((row[0] == 'Braga') | (row[0] == 'Vila Real') |
+		(row[0] == 'Aveiro') | (row[0] == 'Bragança') | (row[0] == 'Coimbra')|
+		(row[0] == 'Guarda') | (row[0] == 'Porto') | (row[0] == 'Viseu')):
+			arrayDistrito.append(row[0])
+			arrayPermilagem.append(row[3])
+		pass
+	figs, ax = graf.subplots()
+	x = np.arange(len(arrayDistrito))
+	ax.set_xlabel('distritos')
+	ax.set_ylabel('Entradas')
+	ax.set_title('Permilagem de alunos colocados por distrito no Norte')
+	ax.set_xticklabels(zip(arrayDistrito), rotation = 90)
+	ax.bar(x, arrayPermilagem)
+	graf.show()
+	pass
+def graficoDPC(mother,lista):
+	arrayDistrito, arrayPermilagem = [],[]
+	for row in lista:
+		if ((row[0] == 'Lisboa') | (row[0] == 'Leiria') |
+		(row[0] == 'Santarém') | (row[0] == 'Castelo Branco') | 
+		(row[0] == 'Setúbal') | (row[0] == 'Portalegre')):
+			arrayDistrito.append(row[0])
+			arrayPermilagem.append(row[3])
+		pass
+	figs, ax = graf.subplots()
+	x = np.arange(len(arrayDistrito))
+	ax.set_xlabel('distritos')
+	ax.set_ylabel('Entradas')
+	ax.set_title('Permilagem de alunos colocados por distrito no Centro')
+	ax.set_xticklabels(zip(arrayDistrito), rotation = 90)
+	ax.bar(x, arrayPermilagem)
+	graf.show()
+	pass
+def graficoDPS(mother,lista):
+	arrayDistrito, arrayPermilagem = [],[]
+	for row in lista:
+		if ((row[0] == 'Faro') | (row[0] == 'Évora') |
+		(row[0] == 'Beja')):
+			arrayDistrito.append(row[0])
+			arrayPermilagem.append(row[3])
+		pass
+	figs, ax = graf.subplots()
+	x = np.arange(len(arrayDistrito))
+	ax.set_xlabel('distritos')
+	ax.set_ylabel('Entradas')
+	ax.set_title('Permilagem de alunos colocados por distrito no Sul')
+	ax.set_xticklabels(zip(arrayDistrito), rotation = 90)
+	ax.bar(x, arrayPermilagem)
+	graf.show()
+	pass
+def graficoEscolasEntradas(mother, lista):
+	arrayInstituicao = []
+	arrayEntradas = []
+	for row in lista:
+		if 'Escola' in row[0]:
+			arrayInstituicao.append(row[0])
+			arrayEntradas.append(row[1])
+			pass
+		pass
+	figs, ax = graf.subplots()
+	x = np.arange(len(arrayInstituicao))
+	ax.set_xlabel(u'instituições')
+	ax.set_ylabel('entradas')
+	ax.set_title(u'Entradas em escolas')
+	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	ax.bar(x, arrayEntradas)
+	graf.show()
+	pass 
+def graficoEscolasVagas(mother, lista):
+	arrayInstituicao = []
+	arrayVagas = []
+	for row in lista:
+		if 'Escola' in row[0]:
+			arrayInstituicao.append(row[0])
+			arrayVagas.append(row[1])
+			pass
+		pass
+	figs, ax = graf.subplots()
+	x = np.arange(len(arrayInstituicao))
+	ax.set_xlabel(u'instituições')
+	ax.set_ylabel('entradas')
+	ax.set_title(u'vagas em escolas')
+	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	ax.bar(x, arrayVagas)
 	graf.show()
 	pass

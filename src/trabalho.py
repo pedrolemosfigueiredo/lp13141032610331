@@ -71,14 +71,47 @@ class Trabalho:
         sd.tabela_distritos(self.c.fetchall())
         pass
     def criacaoGraficoEntradasNorte(self, ficheiro_base_de_dados):
-        #self.c.execute('''select * from escolas''')
-        #sd.graficoInst(self, self.c.fetchall())
         self.c.execute('''select * from distritos''')        
         sd.graficoDEN(self, self.c.fetchall())
         pass
-    pass
-tr = Trabalho()
-tr.passagem_de_dados('cna131fresultados.xls', 'trabalho')
-tr.estatistica1('trabalho')
-tr.estatistica2('trabalho')
-tr.criacaoGraficoEntradasNorte('trabalho')
+    def criacaoGraficoEntradasCentro(self, ficheiro_base_de_dados):
+        self.c.execute('''select * from distritos''')        
+        sd.graficoDEC(self, self.c.fetchall())
+        pass
+    def criacaoGraficoEntradasSul(self, ficheiro_base_de_dados):
+        self.c.execute('''select * from distritos''')        
+        sd.graficoDES(self, self.c.fetchall())
+        pass
+    def criacaoGraficoVagasNorte(self,ficheiro_base_de_dados):
+		self.c.execute('''select * from distritos''')        
+		sd.graficoDVN(self, self.c.fetchall())
+		pass
+    def criacaoGraficoVagasCentro(self,ficheiro_base_de_dados):
+		self.c.execute('''select * from distritos''')        
+		sd.graficoDVC(self, self.c.fetchall())
+		pass
+    def criacaoGraficoVagasSul(self,ficheiro_base_de_dados):
+		self.c.execute('''select * from distritos''')
+		sd.graficoDVS(self, self.c.fetchall())
+		pass
+    def criacaoGraficoPermilagemNorte(self,ficheiro_base_de_dados):
+		self.c.execute('''select * from distritos''')
+		sd.graficoDPN(self, self.c.fetchall())
+		pass
+    def criacaoGraficoPermilagemCentro(self,ficheiro_base_de_dados):
+		self.c.execute('''select * from distritos''')
+		sd.graficoDPC(self, self.c.fetchall())
+		pass
+    def criacaoGraficoPermilagemSul(self,ficheiro_base_de_dados):
+		self.c.execute('''select * from distritos''')
+		sd.graficoDPS(self, self.c.fetchall())
+		pass
+    def criacaoGraficoEntradasEscolas(self,ficheiro_base_de_dados):
+		self.c.execute('''select*from escolas''')
+		sd.graficoEscolasEntradas(self, self.c.fetchall())
+		pass
+#tr = Trabalho()
+#tr.passagem_de_dados('cna131fresultados.xls', 'trabalho')
+#tr.estatistica1('trabalho')
+#tr.estatistica2('trabalho')
+#tr.criacaoGraficoEntradasEscolas('trabalho')
