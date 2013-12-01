@@ -460,6 +460,7 @@ def graficoEscolasVagas(mother, lista):
 	ax.set_ylabel('entradas')
 	ax.set_title(u'vagas em escolas')
 	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	print arrayVagas
 	ax.bar(x, arrayVagas)
 	graf.show()
 	pass

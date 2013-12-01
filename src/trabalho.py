@@ -7,6 +7,7 @@ import xlrd
 from xlrd import open_workbook
 import sqlite3
 import script_distrito as sd
+import csv
 
 class Trabalho:
     def __init__(self):
@@ -70,6 +71,15 @@ class Trabalho:
         self.c.execute('''select * from escolas''')
         sd.tabela_distritos(self.c.fetchall())
         pass
+    def estatisticasCSV(self, ficheiro_base_de_dados):
+        self.c.execute('''select * from escolas''')
+        csvWriter = csv.writer(open('institutos.csv','wt'))
+        csvWriter.writerows(self.c)
+        del csvWriter
+        self.c.execute('''select * from distritos''')
+        csvWriter = csv.writer(open('distritos.csv','wt'))
+        csvWriter.writerows(self.c)
+        del csvWriter
     def criacaoGraficoEntradasNorte(self, ficheiro_base_de_dados):
         self.c.execute('''select * from distritos''')        
         sd.graficoDEN(self, self.c.fetchall())
@@ -147,3 +157,4 @@ class Trabalho:
 #tr.estatistica1('trabalho')
 #tr.estatistica2('trabalho')
 #tr.criacaoGraficoEntradasEscolas('trabalho')
+#tr.estatisticasCSV('trabalho')

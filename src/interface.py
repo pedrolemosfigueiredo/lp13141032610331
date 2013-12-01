@@ -25,6 +25,9 @@ class MyFrame(wx.Frame):
 		
 		self.button_estatisticas = wx.Button(self.notebook_1_pane_db, -1, u"Criação de tabelas para a estatística")
 		self.Bind(wx.EVT_BUTTON, self.criar_estatisticas, self.button_estatisticas)
+		self.label_csv = wx.StaticText(self.notebook_1_pane_db, -1, u"Clicando no botão seguinte passa os dados da estatística para um ficheiro CSV")
+		self.button_csv = wx.Button(self.notebook_1_pane_db, -1, u"Criar ficheiro CSV")
+		self.Bind(wx.EVT_BUTTON, self.passagem_csv, self.button_csv)
 		
 		self.notebook_1_pane_graficos_distritos = wx.Panel(self.notebook_1, -1)
 		self.label_3 = wx.StaticText(self.notebook_1_pane_graficos_distritos, -1, u"Criação das estatísticas dos institutos do Norte")
@@ -174,6 +177,8 @@ class MyFrame(wx.Frame):
 	def criar_grafico_percentagem_universidades(self,event):
 		self.tr.criacaoGraficoUniversidadesPercentagem('trabalho')
 		event.Skip()
+	def passagem_csv(self,event):
+		self.tr.estatisticasCSV('trabalho')
 #fim de funções eventos dos botões
 	def __set_properties(self):
 		# begin wxGlade: MyFrame.__set_properties
@@ -201,6 +206,8 @@ class MyFrame(wx.Frame):
 		sizer_6.Add(self.button_criar_db, 0, 0, 0)
 		sizer_6.Add(self.label_2, 0, 0, 0)
 		sizer_6.Add(self.button_estatisticas, 0, 0, 0)
+		sizer_6.Add(self.label_csv)
+		sizer_6.Add(self.button_csv)
 		sizer_2.Add(sizer_6, 1, wx.EXPAND, 0)
 		self.notebook_1_pane_db.SetSizer(sizer_2)
 		sizer_9.Add(self.label_3, 0, 0, 0)
