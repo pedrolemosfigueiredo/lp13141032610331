@@ -541,7 +541,7 @@ def graficoEscolasEntradas(mother, lista):
 	ax.set_xlabel(u'instituições')
 	ax.set_ylabel('entradas')
 	ax.set_title(u'Entradas em escolas')
-	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	ax.set_xticklabels(tuple(arrayInstituicao), rotation = 90)
 	ax.bar(x, arrayEntradas)
 	graf.show()
 	pass
@@ -570,7 +570,7 @@ def graficoEscolasVagas(mother, lista):
 	ax.set_xlabel(u'instituições')
 	ax.set_ylabel('entradas')
 	ax.set_title(u'vagas em escolas')
-	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	ax.set_xticklabels(tuple(arrayInstituicao), rotation = 90)
 	print arrayVagas
 	ax.bar(x, arrayVagas)
 	graf.show()
@@ -595,7 +595,7 @@ def graficoEscolasPercentagem(mother, lista):
 	ax.set_xlabel(u'instituições')
 	ax.set_ylabel('entradas')
 	ax.set_title(u'Percentagem de alunos em relação ao total')
-	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	ax.set_xticklabels(tuple(arrayInstituicao), rotation = 90)
 	ax.bar(x, arrayPercentagem)
 	graf.show()
 	pass
@@ -619,7 +619,7 @@ def graficoInstitutosEntradas(mother, lista):
 	ax = f.add_axes([0.1, 0.1, 0.8, 0.8])
 	ax.bar(x, arrayEntradas, align='center')
 	ax.set_xticks(x)
-	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	ax.set_xticklabels(tuple(arrayInstituicao), rotation = 90)
 	graf.show()
 	pass
 
@@ -642,7 +642,7 @@ def graficoInstitutosVagas(mother, lista):
 	ax = f.add_axes([0.1, 0.1, 0.8, 0.8])
 	ax.bar(x, arrayVagas, align='center')
 	ax.set_xticks(x)
-	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	ax.set_xticklabels(tuple(arrayInstituicao), rotation = 90)
 	graf.show()
 	pass
 
@@ -665,7 +665,7 @@ def graficoInstitutosPercentagem(mother, lista):
 	ax = f.add_axes([0.1, 0.1, 0.8, 0.8])
 	ax.bar(x, arrayPercentagem, align='center')
 	ax.set_xticks(x)
-	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	ax.set_xticklabels(tuple(arrayInstituicao), rotation = 90)
 	graf.show()
 	pass
 
@@ -688,7 +688,7 @@ def graficoUniversidadesEntradas(mother,lista):
 	ax = f.add_axes([0.1, 0.1, 0.8, 0.8])
 	ax.bar(x, arrayEntradas, align='center')
 	ax.set_xticks(x)
-	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	ax.set_xticklabels(tuple(arrayInstituicao), rotation = 90)
 	graf.show()
 	pass
 
@@ -711,7 +711,7 @@ def graficoUniversidadesVagas(mother,lista):
 	ax = f.add_axes([0.1, 0.1, 0.8, 0.8])
 	ax.bar(x, arrayVagas, align='center')
 	ax.set_xticks(x)
-	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	ax.set_xticklabels(tuple(arrayInstituicao), rotation = 90)
 	graf.show()
 	pass
 
@@ -734,7 +734,7 @@ def graficoUniversidadesPercentagem(mother,lista):
 	ax = f.add_axes([0.1, 0.1, 0.8, 0.8])
 	ax.bar(x, arrayPercentagem, align='center')
 	ax.set_xticks(x)
-	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
+	ax.set_xticklabels(tuple(arrayInstituicao), rotation = 90)
 	graf.show()
 	pass
 	
