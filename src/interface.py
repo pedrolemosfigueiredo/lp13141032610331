@@ -6,16 +6,29 @@ import wx
 import trabalho as t
 # begin wxGlade: extracode
 # end wxGlade
-
+"""
+This is the interface class, once you start the program by initializing
+this class
+"""
 
 class MyFrame(wx.Frame):
+        """
+                Starts the the program interface
+                @param wx.Frame The window of the program 
+        """
+        
 	def __init__(self, *args, **kwds):
+                """
+                        Constructor method of the wx interface                        
+                """
 		# begin wxGlade: MyFrame.__init__
 		self.tr =t.Trabalho()
 		kwds["style"] = wx.DEFAULT_FRAME_STYLE
 		wx.Frame.__init__(self, *args, **kwds)
-		self.notebook_1 = wx.Notebook(self, -1, style=0)
-		self.notebook_1_pane_db = wx.Panel(self.notebook_1, -1)
+		
+		self.notebook_1 = wx.Notebook(self, -1, style=0)# Creates the section where all the panes will be deposited
+		
+		self.notebook_1_pane_db = wx.Panel(self.notebook_1, -1)# Creates the first pane which contains 3 buttons responsible for creating the DB, CSVs and imports data from xls 
 		self.label_1 = wx.StaticText(self.notebook_1_pane_db, -1, u"Clicando no botão seguinte pode fazer a passagem dos dados da folha excel para uma base de dados")
 		
 		self.button_criar_db = wx.Button(self.notebook_1_pane_db, -1, "Criar Base de dados")
@@ -108,85 +121,188 @@ class MyFrame(wx.Frame):
 		pass
 #início de funções eventos dos botões.......................................................................    
 	def criar_db(self, event):
+                """
+                        Event responsible for creating the DB
+                """
 		self.tr.passagem_de_dados('cna131fresultados.xls', 'trabalho')
 		event.Skip()
 		pass
 	
 	def criar_estatisticas(self, event):
+                """
+                        Event responsible for creating the estatistics in which the program is going to base himself
+                """
 		self.tr.estatistica1('trabalho')
 		self.tr.estatistica2('trabalho')
 		event.Skip()
 		pass
+	
 	def criar_grafico_entradas_norte(self, event):
+                """
+                        Event Responsible for creating the graph which shows the number of entries in the north
+                """
 		self.tr.criacaoGraficoEntradasNorte('trabalho')
 		event.Skip()
 		pass
+	
 	def criar_grafico_entradas_centro(self, event):
+                """
+                     Event Responsible for creating the graph which shows the number of entries in the center   
+                """
 		self.tr.criacaoGraficoEntradasCentro('trabalho')
 		event.Skip()
 		pass
+	
 	def criar_grafico_entradas_sul(self, event):
+                """
+                     Event Responsible for creating the graph which shows the number of entries in the south   
+                """
 		self.tr.criacaoGraficoEntradasSul('trabalho')
 		event.Skip()
 		pass
+	
 	def criar_grafico_vagas_norte(self, event):
+                """
+                     Event Responsible for creating the graph which shows the number of vacancies in the north   
+                """
 		self.tr.criacaoGraficoVagasNorte('trabalho')
 		event.Skip()
 		pass
+	
 	def criar_grafico_vagas_centro(self, event):
+                """
+                     Event Responsible for creating the graph which shows the number of vacancies in the center   
+                """
 		self.tr.criacaoGraficoVagasCentro('trabalho')
 		event.Skip()
 		pass
+	
 	def criar_grafico_vagas_sul(self, event):
+                """
+                     Event Responsible for creating the graph which shows the number of vacancies in the south   
+                """
 		self.tr.criacaoGraficoVagasSul('trabalho')
 		event.Skip()
 		pass
+	
 	def criar_grafico_permilagem_norte(self,event):
+                """
+                     Event Responsible for creating the graph which shows per thousand of vacancies ocuppied in the north  
+                """
 		self.tr.criacaoGraficoPermilagemNorte('trabalho')
 		event.Skip()
+		pass
+	
 	def criar_grafico_permilagem_centro(self,event):
+                """
+                     Event Responsible for creating the graph which shows per thousand of vacancies ocuppied in the center  
+                """
 		self.tr.criacaoGraficoPermilagemCentro('trabalho')
 		event.Skip()
+		pass
+	
 	def criar_grafico_permilagem_Sul(self,event):
+                """
+                     Event Responsible for creating the graph which shows per thousand of vacancies ocuppied in the south  
+                """
 		self.tr.criacaoGraficoPermilagemSul('trabalho')
 		event.Skip()
+		pass
+	
 	def criar_grafico_entradas_escolas(self,event):
+                """
+                        Event resposible for creating the graph which links the number of entries in each school
+                """
 		self.tr.criacaoGraficoEscolasEntradas('trabalho')
 		event.Skip()
+		pass
+	
 	def criar_grafico_vagas_escolas(self,event):
+                """
+                        Event resposible for creating the graph which links the number of vacancies in each school
+                """
 		self.tr.criacaoGraficoEscolasVagas('trabalho')
 		event.Skip()
+		pass
+	
 	def criar_grafico_percentagem_escolas(self,event):
+                """
+                     Event Responsible for creating the graph which shows percentage of vacancies ocuppied in each school  
+                """
 		self.tr.criacaoGraficoEscolasPercentagem('trabalho')
 		event.Skip()
+		pass
+	
 	def criar_grafico_entradas_institutos(self,event):
+                """
+                        Event resposible for creating the graph which links the number of entries in each institute
+                """
 		self.tr.criacaoGraficoInstitutosEntradas('trabalho')
 		event.Skip()
+		pass
+	
 	def criar_grafico_vagas_institutos(self,event):
+                """
+                        Event resposible for creating the graph which links the number of vacancies in each institute
+                """
 		self.tr.criacaoGraficoInstitutosVagas('trabalho')
 		event.Skip()
+		pass
+	
 	def criar_grafico_percentagem_institutos(self,event):
+                """
+                        Event resposible for creating the graph which shows percentage of vacancies ocuppied in each institute
+                """
 		self.tr.criacaoGraficoInstitutosPercentagem('trabalho')
 		event.Skip()
+		pass
+	
 	def criar_grafico_entradas_universidades(self,event):
+                """
+                        Event resposible for creating the graph which links the number of entries in each university
+                """
 		self.tr.criacaoGraficoUniversidadesEntradas('trabalho')
 		event.Skip()
+		pass
+	
 	def criar_grafico_vagas_universidades(self,event):
+                """
+                        Event resposible for creating the graph which links the number of vacancies in each university
+                """
 		self.tr.criacaoGraficoUniversidadesVagas('trabalho')
 		event.Skip()
+		pass
+	
 	def criar_grafico_percentagem_universidades(self,event):
+                """
+                        Event resposible for creating the graph which shows percentage of vacancies ocuppied in each university
+                """
 		self.tr.criacaoGraficoUniversidadesPercentagem('trabalho')
 		event.Skip()
+		pass
+	
 	def passagem_csv(self,event):
+                """
+                        Event responsible for converting the database tables into csv files
+                """
 		self.tr.estatisticasCSV('trabalho')
+		pass
+	
 #fim de funções eventos dos botões
 	def __set_properties(self):
+                """
+                        This method sets important characteristics of the program interface frame
+                """
 		# begin wxGlade: MyFrame.__set_properties
 		self.SetTitle(u"Trabalho prático")
 		self.notebook_1_pane_graficos_distritos.SetMinSize((1302, 121))
+		pass
 		# end wxGlade
 
 	def __do_layout(self):
+                """
+                        Sets the layout of the various elements within the frame
+                """
 		# begin wxGlade: MyFrame.__do_layout
 		sizer_1 = wx.BoxSizer(wx.VERTICAL)
 		sizer_18 = wx.BoxSizer(wx.HORIZONTAL)
@@ -267,4 +383,5 @@ if __name__ == "__main__":
 	app.SetTopWindow(frame_1)
 	frame_1.Show()
 	app.MainLoop()
+	pass
 	

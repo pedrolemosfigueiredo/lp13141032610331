@@ -4,7 +4,16 @@ import sqlite3
 import matplotlib.pyplot as graf
 import numpy as np
 
+"""
+        This script is the logic segment of this program, in a MVC
+        comparison this would be the section most similar to the model
+"""
 def tabela_distritos(lista):
+        """
+                This function creates the district table on the database and
+                inserts the values into it
+                @param lista the list with districts on the resultados_rna table
+        """
 	mapa_distritos = { 'Lisboa' : 'Lisboa' }
 	conn = sqlite3.connect('trabalho')
 	conn.text_factory = str
@@ -83,25 +92,18 @@ def tabela_distritos(lista):
 		cursor.execute('insert into distritos values(?,?,?,?)',(x[0],x[1],x[2], x[3]))
 		pass
 	conn.commit()
-		
-		
-'''try:
-			print info + ' =) ' + distrito
-			print "distrito de " + mapa_distritos[distrito]
-		except:
-			print info + ' =) ' + distrito
-			pass
-		pass'''
-'''
-	 cursor.commit()
-	 conn.close()
-	 '''
+
 	 
 
 
 def tabela_escolas(lista):
-	conn = sqlite3.connect('trabalho')
-	conn.text_factory = str
+        """
+                This function creates the schools table on the database and
+                inserts the values into it
+                @param lista the list with schools on the resultados_rna table
+        """
+        conn = sqlite3.connect('trabalho')
+        conn.text_factory = str
 	cursor = conn.cursor()
 	cursor.execute("drop table if exists escolas")
 	cursor.execute('''create table escolas(instituição , entradas, vagas, 
@@ -163,6 +165,11 @@ def tabela_escolas(lista):
 #instituição
 
 def graficoInst(mother, lista):
+        """
+                Builds a graphic wich demonstrates the number of students
+                positioned in each instituicion
+                @param lista list with the number of students in the institutes
+        """
 	arrayInstituicao = []
 	arrayEntradas = []
 	for row in lista:
@@ -183,6 +190,11 @@ def graficoInst(mother, lista):
 #instituição
 
 def graficoIV(mother, lista):
+        """
+                Builds a graphic wich demonstrates the number of vacancies
+                in each instituicion
+                @param lista list with the number of students in the institutes
+        """
 	arrayInstituicao = []
 	arrayVagas = []
 	for row in lista:
@@ -199,9 +211,16 @@ def graficoIV(mother, lista):
 	graf.show()
 	print arrayVagas
 	pass
+
 # Constrói o Gráfico das estatísticas que mostra a percentagem de alunos
 # numa instituição em relação ao total de alunos
+
 def graficoIP(mother, lista):
+        """
+                Builds a graphic wich demonstrates the per thousand of ocuppied
+                vacancies in each instituicion
+                @param lista list with the number of students in the institutes
+        """
 	arrayInstituicao = []
 	arrayPercentagem = []
 	for row in lista:
@@ -219,6 +238,11 @@ def graficoIP(mother, lista):
 	pass
 # Constrói um gráfico que mostra os alunos colocados por distrito
 def graficoDA(mother,lista):
+        """
+                Builds a graphic wich demonstrates the number of students
+                positioned in each district
+                @param lista list with the number of students in the institutes
+        """
 	arrayDistrito, arrayAluno = [],[]
 	for row in lista:
 		arrayDistrito.append(row[0])
@@ -235,6 +259,11 @@ def graficoDA(mother,lista):
 	pass
 #Constrói um gráfico que mostra as vagas sobrantes po distrito
 def graficoDV(mother,lista):
+        """
+                Builds a graphic wich demonstrates the number of vacancies
+                in each district
+                @param lista list with the number of students in the institutes
+        """
 	arrayDistrito, arrayVaga = [],[]
 	for row in lista:
 		arrayDistrito.append(row[0])
@@ -252,6 +281,11 @@ def graficoDV(mother,lista):
 # Constrói um gráfico que mostra em permilagem os alunos que 
 # entraram em relação àqueles que concorreram por distrito
 def graficoDP(mother,lista):
+        """
+                Builds a graphic wich demonstrates the per thousand of ocuppied
+                vacancies in each district
+                @param lista list with the number of students in the institutes
+        """
 	arrayDistrito, arrayPermilagem = [],[]
 	for row in lista:
 		arrayDistrito.append(row[0])
@@ -266,7 +300,13 @@ def graficoDP(mother,lista):
 	ax.bar(x, arrayPermilagem)
 	graf.show()
 	pass
+
 def graficoDEN(mother,lista):
+        """
+                Builds a graphic wich demonstrates the number entrys
+                in the north
+                @param lista list with the number of students in the institutes
+        """
 	arrayDistrito, arrayEntradas = [],[]
 	for row in lista:
 		if ((row[0] == 'Braga') | (row[0] == 'Vila Real') |
@@ -284,7 +324,13 @@ def graficoDEN(mother,lista):
 	ax.bar(x, arrayEntradas)
 	graf.show()
 	pass
+
 def graficoDEC(mother,lista):
+        """
+                Builds a graphic wich demonstrates the number entrys
+                in the center
+                @param lista list with the number of students in the institutes
+        """
 	arrayDistrito, arrayEntradas = [],[]
 	print 'olá'
 	for row in lista:
@@ -303,7 +349,13 @@ def graficoDEC(mother,lista):
 	ax.bar(x, arrayEntradas)
 	graf.show()
 	pass
+
 def graficoDES(mother,lista):
+        """
+                Builds a graphic wich demonstrates the number entrys
+                in the south
+                @param lista list with the number of students in the institutes
+        """
 	arrayDistrito, arrayEntradas = [],[]
 	for row in lista:
 		if ((row[0] == 'Faro') | (row[0] == 'Évora') |
@@ -320,7 +372,13 @@ def graficoDES(mother,lista):
 	ax.bar(x, arrayEntradas)
 	graf.show()
 	pass
+
 def graficoDVN(mother,lista):
+        """
+                Builds a graphic wich demonstrates the number of vacancies
+                in the north
+                @param lista list with the number of students in the institutes
+        """
 	arrayDistrito, arrayVagas = [],[]
 	for row in lista:
 		if ((row[0] == 'Braga') | (row[0] == 'Vila Real') |
@@ -338,7 +396,13 @@ def graficoDVN(mother,lista):
 	ax.bar(x, arrayVagas)
 	graf.show()
 	pass
+
 def graficoDVC(mother,lista):
+        """
+                Builds a graphic wich demonstrates the number of vacancies
+                in the center
+                @param lista list with the number of students in the institutes
+        """
 	arrayDistrito, arrayVagas = [],[]
 	print 'olá'
 	for row in lista:
@@ -357,7 +421,13 @@ def graficoDVC(mother,lista):
 	ax.bar(x, arrayVagas)
 	graf.show()
 	pass
+
 def graficoDVS(mother,lista):
+        """
+                Builds a graphic wich demonstrates the number of vacancies
+                in the south
+                @param lista list with the number of students in the institutes
+        """
 	arrayDistrito, arrayVagas = [],[]
 	for row in lista:
 		if ((row[0] == 'Faro') | (row[0] == 'Évora') |
@@ -374,7 +444,13 @@ def graficoDVS(mother,lista):
 	ax.bar(x, arrayVagas)
 	graf.show()
 	pass
+
 def graficoDPN(mother,lista):
+        """
+                Builds a graphic wich demonstrates the per thousand
+                of ocuppied vacancies in the north
+                @param lista list with the number of students in the institutes
+        """
 	arrayDistrito, arrayPermilagem = [],[]
 	for row in lista:
 		if ((row[0] == 'Braga') | (row[0] == 'Vila Real') |
@@ -392,7 +468,13 @@ def graficoDPN(mother,lista):
 	ax.bar(x, arrayPermilagem)
 	graf.show()
 	pass
+
 def graficoDPC(mother,lista):
+        """
+                Builds a graphic wich demonstrates the per thousand
+                of ocuppied vacancies in the center
+                @param lista list with the number of students in the institutes
+        """
 	arrayDistrito, arrayPermilagem = [],[]
 	for row in lista:
 		if ((row[0] == 'Lisboa') | (row[0] == 'Leiria') |
@@ -410,7 +492,13 @@ def graficoDPC(mother,lista):
 	ax.bar(x, arrayPermilagem)
 	graf.show()
 	pass
+
 def graficoDPS(mother,lista):
+        """
+                Builds a graphic wich demonstrates the per thousand
+                of ocuppied vacancies in the south
+                @param lista list with the number of students in the institutes
+        """
 	arrayDistrito, arrayPermilagem = [],[]
 	for row in lista:
 		if ((row[0] == 'Faro') | (row[0] == 'Évora') |
@@ -427,7 +515,13 @@ def graficoDPS(mother,lista):
 	ax.bar(x, arrayPermilagem)
 	graf.show()
 	pass
+
 def graficoEscolasEntradas(mother, lista):
+        """
+                Builds a graphic wich demonstrates the number of entrys
+                in each school
+                @param lista list with the number of students in the institutes
+        """
 	arrayInstituicao = []
 	arrayEntradas = []
 	for row in lista:
@@ -444,8 +538,14 @@ def graficoEscolasEntradas(mother, lista):
 	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
 	ax.bar(x, arrayEntradas)
 	graf.show()
-	pass 
+	pass
+
 def graficoEscolasVagas(mother, lista):
+        """
+                Builds a graphic wich demonstrates the number of vacancies
+                in each school
+                @param lista list with the number of students in the institutes
+        """
 	arrayInstituicao = []
 	arrayVagas = []
 	for row in lista:
@@ -464,7 +564,13 @@ def graficoEscolasVagas(mother, lista):
 	ax.bar(x, arrayVagas)
 	graf.show()
 	pass
+
 def graficoEscolasPercentagem(mother, lista):
+        """
+                Builds a graphic wich demonstrates the per thousand of ocuppied
+                vacancies in each school
+                @param lista list with the number of students in the institutes
+        """
 	arrayInstituicao = []
 	arrayPercentagem = []
 	for row in lista:
@@ -482,7 +588,13 @@ def graficoEscolasPercentagem(mother, lista):
 	ax.bar(x, arrayPercentagem)
 	graf.show()
 	pass
+
 def graficoInstitutosEntradas(mother, lista):
+        """
+                Builds a graphic wich demonstrates the number of entrys
+                in each institute
+                @param lista list with the number of students in the institutes
+        """
 	arrayInstituicao = []
 	arrayEntradas = []
 	for row in lista:
@@ -500,7 +612,13 @@ def graficoInstitutosEntradas(mother, lista):
 	ax.bar(x, arrayEntradas)
 	graf.show()
 	pass
+
 def graficoInstitutosVagas(mother, lista):
+        """
+                Builds a graphic wich demonstrates the number of vacancies
+                in each institute
+                @param lista list with the number of students in the institutes
+        """
 	arrayInstituicao = []
 	arrayVagas = []
 	for row in lista:
@@ -518,7 +636,13 @@ def graficoInstitutosVagas(mother, lista):
 	ax.bar(x, arrayVagas)
 	graf.show()
 	pass
+
 def graficoInstitutosPercentagem(mother, lista):
+        """
+                Builds a graphic wich demonstrates the per thousand of ocuppied
+                vacancies in each institute
+                @param lista list with the number of students in the institutes
+        """
 	arrayInstituicao = []
 	arrayPercentagem = []
 	for row in lista:
@@ -536,7 +660,13 @@ def graficoInstitutosPercentagem(mother, lista):
 	ax.bar(x, arrayPercentagem)
 	graf.show()
 	pass
+
 def graficoUniversidadesEntradas(mother,lista):
+        """
+                Builds a graphic wich demonstrates the number of students
+                positioned in each university
+                @param lista list with the number of students in the institutes
+        """
 	arrayInstituicao = []
 	arrayEntradas = []
 	for row in lista:
@@ -554,7 +684,13 @@ def graficoUniversidadesEntradas(mother,lista):
 	ax.bar(x, arrayEntradas)
 	graf.show()
 	pass
+
 def graficoUniversidadesVagas(mother,lista):
+        """
+                Builds a graphic wich demonstrates the number of vacancies
+                in each university
+                @param lista list with the number of students in the institutes
+        """
 	arrayInstituicao = []
 	arrayVagas = []
 	for row in lista:
@@ -572,7 +708,13 @@ def graficoUniversidadesVagas(mother,lista):
 	ax.bar(x, arrayVagas)
 	graf.show()
 	pass
+
 def graficoUniversidadesPercentagem(mother,lista):
+        """
+                Builds a graphic wich demonstrates the per thousand of ocuppied
+                vacancies in each university
+                @param lista list with the number of students in the institutes
+        """
 	arrayInstituicao = []
 	arrayPercentagem = []
 	for row in lista:
