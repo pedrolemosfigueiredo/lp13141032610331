@@ -550,9 +550,14 @@ def graficoEscolasVagas(mother, lista):
 	arrayVagas = []
 	for row in lista:
 		if 'Escola' in row[0]:
-			arrayInstituicao.append(detectUpper(row[0]))
-			arrayVagas.append(row[2])
-			pass
+			if row[2] != 0:
+				arrayInstituicao.append(detectUpper(row[0]))
+				arrayVagas.append(row[2])
+				pass
+			else:
+				arrayInstituicao.append(detectUpper(row[0]))
+				arrayVagas.append(1)
+				pass
 		pass
 	figs, ax = graf.subplots()
 	x = np.arange(len(arrayInstituicao))
