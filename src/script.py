@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-
+# autor: Pedro Figueiredo e Alexandre Leitão
+# data: 02 de Dezembro de 2013
+# trabalho de Linguagens de Programação
 import sqlite3
 import matplotlib.pyplot as graf
 import numpy as np
@@ -363,13 +365,12 @@ def graficoDES(mother,lista):
 			arrayDistrito.append(row[0])
 			arrayEntradas.append(row[1])
 		pass
-	figs, ax = graf.subplots()
 	x = np.arange(len(arrayDistrito))
-	ax.set_xlabel('distritos')
-	ax.set_ylabel('Entradas')
-	ax.set_title('Alunos colocados por distrito no Sul')
-	ax.set_xticklabels(zip(arrayDistrito), rotation = 90)
-	ax.bar(x, arrayEntradas)
+	f = graf.figure()
+	ax = f.add_axes([0.1, 0.1, 0.8, 0.8])
+	ax.bar(x, arrayEntradas, align='center')
+	ax.set_xticks(x)
+	ax.set_xticklabels(zip(arrayDistrito))
 	graf.show()
 	pass
 
@@ -435,13 +436,12 @@ def graficoDVS(mother,lista):
 			arrayDistrito.append(row[0])
 			arrayVagas.append(row[2])
 		pass
-	figs, ax = graf.subplots()
 	x = np.arange(len(arrayDistrito))
-	ax.set_xlabel('distritos')
-	ax.set_ylabel('Entradas')
-	ax.set_title('Alunos colocados por distrito no Sul')
-	ax.set_xticklabels(zip(arrayDistrito), rotation = 90)
-	ax.bar(x, arrayVagas)
+	f = graf.figure()
+	ax = f.add_axes([0.1, 0.1, 0.8, 0.8])
+	ax.bar(x, arrayVagas, align='center')
+	ax.set_xticks(x)
+	ax.set_xticklabels(zip(arrayDistrito))
 	graf.show()
 	pass
 
@@ -506,13 +506,19 @@ def graficoDPS(mother,lista):
 			arrayDistrito.append(row[0])
 			arrayPermilagem.append(row[3])
 		pass
-	figs, ax = graf.subplots()
+	#figs, ax = graf.subplots()
+	
+	#ax.set_xlabel('distritos')
+	#ax.set_ylabel('Entradas')
+	#ax.set_title('Permilagem de alunos colocados por distrito no Sul')
+	#ax.set_xticklabels(zip(arrayDistrito), rotation = 90)
+	#ax.bar(x, arrayPermilagem)
 	x = np.arange(len(arrayDistrito))
-	ax.set_xlabel('distritos')
-	ax.set_ylabel('Entradas')
-	ax.set_title('Permilagem de alunos colocados por distrito no Sul')
-	ax.set_xticklabels(zip(arrayDistrito), rotation = 90)
-	ax.bar(x, arrayPermilagem)
+	f = graf.figure()
+	ax = f.add_axes([0.1, 0.1, 0.8, 0.8])
+	ax.bar(x, arrayPermilagem, align='center')
+	ax.set_xticks(x)
+	ax.set_xticklabels(zip(arrayDistrito))
 	graf.show()
 	pass
 
@@ -608,13 +614,12 @@ def graficoInstitutosEntradas(mother, lista):
 			arrayEntradas.append(row[1])
 			pass
 		pass
-	figs, ax = graf.subplots()
 	x = np.arange(len(arrayInstituicao))
-	ax.set_xlabel(u'instituições')
-	ax.set_ylabel('entradas')
-	ax.set_title(u'Entrada de alunos em institutos')
+	f = graf.figure()
+	ax = f.add_axes([0.1, 0.1, 0.8, 0.8])
+	ax.bar(x, arrayEntradas, align='center')
+	ax.set_xticks(x)
 	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
-	ax.bar(x, arrayEntradas)
 	graf.show()
 	pass
 
@@ -632,13 +637,12 @@ def graficoInstitutosVagas(mother, lista):
 			arrayVagas.append(row[2])
 			pass
 		pass
-	figs, ax = graf.subplots()
 	x = np.arange(len(arrayInstituicao))
-	ax.set_xlabel(u'instituições')
-	ax.set_ylabel('entradas')
-	ax.set_title(u'vagas em institutos')
+	f = graf.figure()
+	ax = f.add_axes([0.1, 0.1, 0.8, 0.8])
+	ax.bar(x, arrayVagas, align='center')
+	ax.set_xticks(x)
 	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
-	ax.bar(x, arrayVagas)
 	graf.show()
 	pass
 
@@ -656,13 +660,12 @@ def graficoInstitutosPercentagem(mother, lista):
 			arrayPercentagem.append(row[3])
 			pass
 		pass
-	figs, ax = graf.subplots()
 	x = np.arange(len(arrayInstituicao))
-	ax.set_xlabel(u'instituições')
-	ax.set_ylabel('entradas')
-	ax.set_title(u'Percentagem de alunos em relação ao total')
+	f = graf.figure()
+	ax = f.add_axes([0.1, 0.1, 0.8, 0.8])
+	ax.bar(x, arrayPercentagem, align='center')
+	ax.set_xticks(x)
 	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
-	ax.bar(x, arrayPercentagem)
 	graf.show()
 	pass
 
@@ -680,13 +683,12 @@ def graficoUniversidadesEntradas(mother,lista):
 			arrayEntradas.append(row[1])
 			pass
 		pass
-	figs, ax = graf.subplots()
 	x = np.arange(len(arrayInstituicao))
-	ax.set_xlabel(u'instituições')
-	ax.set_ylabel('entradas')
-	ax.set_title(u'entradas de alunos em universidades')
+	f = graf.figure()
+	ax = f.add_axes([0.1, 0.1, 0.8, 0.8])
+	ax.bar(x, arrayEntradas, align='center')
+	ax.set_xticks(x)
 	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
-	ax.bar(x, arrayEntradas)
 	graf.show()
 	pass
 
@@ -704,13 +706,12 @@ def graficoUniversidadesVagas(mother,lista):
 			arrayVagas.append(row[2])
 			pass
 		pass
-	figs, ax = graf.subplots()
 	x = np.arange(len(arrayInstituicao))
-	ax.set_xlabel(u'instituições')
-	ax.set_ylabel('entradas')
-	ax.set_title(u'vagas em universidades')
+	f = graf.figure()
+	ax = f.add_axes([0.1, 0.1, 0.8, 0.8])
+	ax.bar(x, arrayVagas, align='center')
+	ax.set_xticks(x)
 	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
-	ax.bar(x, arrayVagas)
 	graf.show()
 	pass
 
@@ -728,13 +729,12 @@ def graficoUniversidadesPercentagem(mother,lista):
 			arrayPercentagem.append(row[3])
 			pass
 		pass
-	figs, ax = graf.subplots()
 	x = np.arange(len(arrayInstituicao))
-	ax.set_xlabel(u'instituições')
-	ax.set_ylabel('entradas')
-	ax.set_title(u'Percentagens de aluno em relação ao total')
+	f = graf.figure()
+	ax = f.add_axes([0.1, 0.1, 0.8, 0.8])
+	ax.bar(x, arrayPercentagem, align='center')
+	ax.set_xticks(x)
 	ax.set_xticklabels(zip(arrayInstituicao), rotation = 90)
-	ax.bar(x, arrayPercentagem)
 	graf.show()
 	pass
 	
