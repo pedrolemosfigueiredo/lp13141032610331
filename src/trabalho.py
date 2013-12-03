@@ -17,7 +17,6 @@ nedded queries for graphics
 class Trabalho:
     
     def __init__(self):
-        
         pass
     
     def criar_base_de_dados(self, ficheiro):
@@ -124,7 +123,10 @@ class Trabalho:
             to make the graph which gives the number of entries in the north
             @param ficheiro_base_de_dados name of the database
         """
-        self.c.execute('''select * from distritos''')        
+        if 'conexao' in globals():
+            print 'exists'
+            pass
+        self.c.execute('''select * from distritos''')
         sd.graficoDEN(self, self.c.fetchall())
         pass
     
