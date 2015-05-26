@@ -1,0 +1,1 @@
+Aqui será inserido o código do trabalho em Python da disciplina de Linguagens de Programação pelos alunos Pedro Figueiredo e Alexandre Leitão, números 10326 e 10331, respetivamente
